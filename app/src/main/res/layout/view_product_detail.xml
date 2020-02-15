@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="presentation"
+            type="com.silva.viavarejo.viewmodel.ProductDetailViewModel.Presentation" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:title="@{presentation.productName}" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:loadUrl="@{presentation.productImagePath}"
+            tools:src="@drawable/imagedetail" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvProductName"
+            style="@style/TextView.Title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/very_big_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@{presentation.productName}"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivProduct"
+            tools:text="Smart TV LED 43 Full HD ..." />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDescriptionProduct"
+            style="@style/AppTheme.TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:text="@{presentation.productName}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvProductName"
+            tools:text="Smart TV LED 32\ HD 32J4300 com Connect Share Movie, Screen Mirroring, Wi-Fi, Entradas HDMI e Entrada USB" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPreviousPrice"
+            style="@style/AppTheme.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:text="@{presentation.productPreviousPrice}"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/small_text"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescriptionProduct"
+            app:paintFlagStrike="@{true}"
+            tools:text="R$1.999,00" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCurrentPrice"
+            style="@style/AppTheme.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:text="@{presentation.productCurrentPrice}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/title"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tvPreviousPrice"
+            app:layout_constraintStart_toEndOf="@id/tvPreviousPrice"
+            app:layout_constraintTop_toTopOf="@+id/tvPreviousPrice"
+            tools:text="R$1.999,00" />
+
+        <TextView
+            android:id="@+id/tvInstallmentMaxPrice"
+            style="@style/AppTheme.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:text="@{presentation.productInstallmentMaxPrice}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/very_small_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCurrentPrice"
+            tools:text="10x de R$139,90" />
+
+        <TextView
+            android:id="@+id/tvInstallments"
+            style="@style/AppTheme.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:text="@string/product_detail"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/very_small_text"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/tvInstallmentMaxPrice"
+            app:layout_constraintTop_toBottomOf="@id/tvCurrentPrice" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/AppTheme.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/big_margin"
+            android:text="@string/product_detail_buy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvInstallmentMaxPrice" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

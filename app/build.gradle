@@ -1,0 +1,91 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+def Mockito = '2.19.0'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    signingConfigs {
+        config {
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+            storeFile file(RELEASE_STORE_FILE)
+            storePassword RELEASE_STORE_PASSWORD
+        }
+    }
+
+    defaultConfig {
+        applicationId "com.silva.viavarejo"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+
+    flavorDimensions "default"
+    productFlavors {
+        hml {
+            dimension "default"
+            buildConfigField "String", "API_URL", '"http://www.mocky.io/v2/"'
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-DEBUG'
+            signingConfig signingConfigs.config
+        }
+        prod{
+            buildConfigField "String", "API_URL", '"http://www.mocky.io/v2/"'
+            signingConfig signingConfigs.config
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+
+    implementation "com.google.android.material:material:1.2.0-alpha04"
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    implementation 'com.google.dagger:dagger:2.18'
+    implementation 'com.google.dagger:dagger-android:2.18'
+    implementation 'com.google.dagger:dagger-android-support:2.18'
+    kapt 'com.google.dagger:dagger-compiler:2.18'
+    kapt 'com.google.dagger:dagger-android-processor:2.18'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.0'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation "org.mockito:mockito-core:${Mockito}"
+    testImplementation 'org.mockito:mockito-inline:2.21.0'
+    testImplementation 'android.arch.core:core-testing:1.1.1'
+
+}

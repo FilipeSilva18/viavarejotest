@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ViaVarejoApp</string>
+
+    <string name="open_drawer">Abrir</string>
+    <string name="close_drawer">Fechar</string>
+
+    <string name="item_menu_home">Home</string>
+    <string name="item_menu_products">Produtos</string>
+    <string name="nav_header_name">Nome Completo</string>
+    <string name="nav_header_email">nome@gmail.com</string>
+    <string name="view_main_dev_android">DEV ANDROID</string>
+    <string name="view_main_version_name">VERSION (1.0.0)</string>
+    <string name="view_main_version_code">version_code (10000)</string>
+    <string name="product_detail">ver parcelamentos</string>
+    <string name="product_detail_buy">Comprar</string>
+    <string name="error_message">Ops, algo deu errado, tente novamente em breve!</string>
+</resources>
