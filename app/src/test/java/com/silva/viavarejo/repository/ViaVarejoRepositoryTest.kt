@@ -1,7 +1,9 @@
 package com.silva.viavarejo.repository
 
 import com.silva.viavarejo.base.BaseUnitTest
-import com.silva.viavarejo.data.model.*
+import com.silva.viavarejo.data.model.ProductDetailResponse
+import com.silva.viavarejo.data.model.ProductListResponse
+import com.silva.viavarejo.data.model.WhoSawBoughtResponse
 import com.silva.viavarejo.data.remote.ViaVarejoApi
 import com.silva.viavarejo.data.repository.ViaVarejoRepository
 import com.silva.viavarejo.viewmodel.ProductDetailViewModel
@@ -14,7 +16,6 @@ import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnitRunner
-import java.lang.Exception
 
 @RunWith(MockitoJUnitRunner::class)
 class ViaVarejoRepositoryTest : BaseUnitTest() {
