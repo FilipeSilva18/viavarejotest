@@ -1,7 +1,7 @@
 package com.silva.viavarejo.data.repository
 
-import com.silva.viavarejo.data.model.ProductDetailResponse
 import com.silva.viavarejo.data.model.ProductListResponse
+import com.silva.viavarejo.data.model.WhoSawBoughtResponse
 import com.silva.viavarejo.data.remote.ViaVarejoApi
 import com.silva.viavarejo.viewmodel.ProductDetailViewModel
 import io.reactivex.Observable
@@ -21,5 +21,10 @@ class ViaVarejoRepository @Inject constructor(private val viaVarejoApi: ViaVarej
             .map {
                 it.toProductPresentation()
             }
+    }
+
+    fun getWhoSawBought(): Observable<MutableList<WhoSawBoughtResponse>> {
+        return viaVarejoApi.getWhoSawBought()
+            .subscribeOn(Schedulers.io())
     }
 }

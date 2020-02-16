@@ -21,9 +21,24 @@ data class ProductDetailResponse(
         productCurrentPrice = model.pattern.price.currentPrice.toMoneyFormatter(),
         productPreviousPrice = model.pattern.price.previousPrice.toMoneyFormatter(),
         productInstallmentMaxPrice = model.pattern.price.paymentPlan,
-        productName = name
-
+        productName = name,
+        characteristics = getListCharacteristic()
     )
+
+    private fun getListCharacteristic(): MutableList<MoreInformationValues> {
+        val values: MutableList<MoreInformationValues> = arrayListOf()
+        for (c in moreInformation) {
+            if (c.description == "Características") {
+                for(characteristic in c.values){
+                    if(characteristic.name != "Características Gerais "){
+                        values.add(characteristic)
+                    }
+                }
+                return values
+            }
+        }
+        return arrayListOf()
+    }
 }
 
 data class Categories(
@@ -33,7 +48,7 @@ data class Categories(
 
 data class MoreInformation(
     @SerializedName("descricao") val description: String,
-    @SerializedName("valores") val valores: ArrayList<MoreInformationValues>
+    @SerializedName("valores") val values: ArrayList<MoreInformationValues>
 )
 
 data class MoreInformationValues(
@@ -91,7 +106,7 @@ data class Services(
     @SerializedName("idLojista") val idShopkeeper: Long,
     @SerializedName("preco") val price: Double,
     @SerializedName("parcelamento") val installments: String,
-    @SerializedName("tipo") val tyoe: String
+    @SerializedName("tipo") val type: String
 
 
 )

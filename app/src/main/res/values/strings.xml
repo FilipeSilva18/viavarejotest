@@ -14,4 +14,12 @@
     <string name="product_detail">ver parcelamentos</string>
     <string name="product_detail_buy">Comprar</string>
     <string name="error_message">Ops, algo deu errado, tente novamente em breve!</string>
+    <string name="product_characteristics">CARACTERÍSTICAS</string>
+    <string name="product_who_saw_bought">QUEM VIU COMPROU</string>
+    <string name="product_rating_title">AVALIAÇÕES</string>
+    <string name="product_rating">4.5</string>
+    <string name="product_rating_total">(750 avaliações)</string>
+    <string name="product_rating_last_comment">Último comentário:</string>
+    <string name="product_rating_last_comment_name">Alexandre</string>
+    <string name="product_rating_comment">Produto maravilhoso!!!</string>
 </resources>

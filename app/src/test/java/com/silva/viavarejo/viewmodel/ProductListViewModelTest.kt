@@ -17,6 +17,7 @@ import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnitRunner
+import java.lang.Exception
 
 @RunWith(MockitoJUnitRunner::class)
 class ProductListViewModelTest : BaseUnitTest() {
@@ -50,6 +51,25 @@ class ProductListViewModelTest : BaseUnitTest() {
 
         testProductListLoading()
         verify(viaVarejoRepository).getProductList()
+        verify(observerScreenMock).onChanged(
+            ProductListViewModel.Screen.SuccessProductList(
+                productListResponse.products
+            )
+        )
+
+    }
+
+    @Test
+    fun `Test getProductList when error`() {
+        `when`(viaVarejoRepository.getProductList())
+            .thenReturn(Observable.error(Exception()))
+
+        productListViewModel.getProductList()
+
+        verify(viaVarejoRepository).getProductList()
+        verify(observerScreenMock).onChanged(
+            ProductListViewModel.Screen.ShowError
+        )
 
     }
 
@@ -61,7 +81,6 @@ class ProductListViewModelTest : BaseUnitTest() {
         )
 
         subjectDelayInnerMock.onComplete()
-
 
         assertEquals(
             ProductListViewModel.Screen.SuccessProductList(productListResponse.products),

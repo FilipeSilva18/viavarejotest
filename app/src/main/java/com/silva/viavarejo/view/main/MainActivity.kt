@@ -6,17 +6,17 @@ import androidx.fragment.app.Fragment
 import com.silva.viavarejo.R
 import com.silva.viavarejo.databinding.ActivityMainBinding
 import com.silva.viavarejo.view.base.BaseActivity
+import com.silva.viavarejo.view.base.BaseViewModel
 import com.silva.viavarejo.view.product.list.ProductListFragment
-import com.silva.viavarejo.viewmodel.MainViewModel
 
-class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
+class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>() {
 
     private var active: Fragment = HomeFragment.newInstance()
 
 
     override fun getLayoutId() = R.layout.activity_main
 
-    override fun getViewModelClass() = MainViewModel::class.java
+    override fun getViewModelClass() = BaseViewModel::class.java
 
     override fun init() {
         setSupportActionBar(bind.toolbar)

@@ -3,7 +3,6 @@ package com.silva.viavarejo.di.builder
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.silva.viavarejo.di.annotation.ViewModelKey
-import com.silva.viavarejo.viewmodel.MainViewModel
 import com.silva.viavarejo.viewmodel.ProductDetailViewModel
 import com.silva.viavarejo.viewmodel.ProductListViewModel
 import com.silva.viavarejo.viewmodel.ViewModelProviderFactory
@@ -13,11 +12,6 @@ import dagger.multibindings.IntoMap
 
 @Module
 abstract class ViewModelBuilder {
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(MainViewModel::class)
-    abstract fun bindMainViewModel(mainViewModel: MainViewModel): ViewModel
 
     @Binds
     @IntoMap

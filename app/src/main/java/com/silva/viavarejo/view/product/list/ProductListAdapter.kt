@@ -3,6 +3,7 @@ package com.silva.viavarejo.view.product.list
 import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.GenericTransitionOptions
@@ -45,8 +46,7 @@ class ProductListAdapter(var products: MutableList<Product>) :
 
             Glide.with(VHApplication.getAppContext())
                 .load(product.imageUrl)
-//                .error(ContextCompat.getDrawable(VHApplication.getAppContext(), R.drawable.grey_logo))
-//                .placeholder(ContextCompat.getDrawable(WMApplication.getAppContext(), R.drawable.grey_logo))
+                .error(ContextCompat.getDrawable(VHApplication.getAppContext(), R.drawable.ic_error))
                 .transition(GenericTransitionOptions.with(R.anim.fade_in))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(bind.ivProduct)
