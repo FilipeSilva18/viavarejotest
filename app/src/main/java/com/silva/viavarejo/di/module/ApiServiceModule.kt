@@ -10,7 +10,7 @@ import retrofit2.Retrofit
 class ApiServiceModule {
 
     @Provides
-    internal fun provideWebMotorsApi(@RetrofitApi retrofit: Retrofit): ViaVarejoApi {
+    internal fun provideViaVarejoApi(@RetrofitApi retrofit: Retrofit): ViaVarejoApi {
         return retrofit.create(ViaVarejoApi::class.java)
     }
 }
